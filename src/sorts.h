@@ -49,4 +49,23 @@ vector<Order> merge_sort(
 vector<Order> quick_sort(
     vector<Order> orders_copy);  // Pass by value = automatic copy
 
+// 7. Linked List Node for Iterative QuickSort
+struct OrderNode {
+    Order data;
+    OrderNode* next;
+    OrderNode(Order o) : data(o), next(nullptr) {}
+};
+
+// Iterative QuickSort using Linked List and Stack
+OrderNode* iterative_quick_sort_linked_list(OrderNode* head, bool sort_by_restaurant = true);
+
+// Helper to convert vector to linked list
+OrderNode* vector_to_linked_list(const vector<Order>& orders);
+
+// Helper to convert linked list to vector
+vector<Order> linked_list_to_vector(OrderNode* head);
+
+// Helper to free linked list memory
+void free_linked_list(OrderNode* head);
+
 #endif  // SORTS_H

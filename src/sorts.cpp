@@ -160,3 +160,164 @@ vector<Order> quick_sort(vector<Order> orders_copy) {
                        sorted_greater.end());
     return sorted_less;
 }
+
+// ========= ITERATIVE QUICKSORT WITH LINKED LIST AND STACK =========
+
+// Helper to convert vector to linked list
+OrderNode* vector_to_linked_list(const vector<Order>& orders) {
+    if (orders.empty()) return nullptr;
+    
+    OrderNode* head = new OrderNode(orders[0]);
+    OrderNode* current = head;
+    
+    for (size_t i = 1; i < orders.size(); i++) {
+        current->next = new OrderNode(orders[i]);
+        current = current->next;
+    }
+    
+    return head;
+}
+
+// Helper to convert linked list to vector
+vector<Order> linked_list_to_vector(OrderNode* head) {
+    vector<Order> result;
+    OrderNode* current = head;
+    
+    while (current != nullptr) {
+        result.push_back(current->data);
+        current = current->next;
+    }
+    
+    return result;
+}
+
+// Helper to free linked list memory
+void free_linked_list(OrderNode* head) {
+    while (head != nullptr) {
+        OrderNode* temp = head;
+        head = head->next;
+        delete temp;
+    }
+}
+
+// Stack structure for iterative quicksort
+struct StackNode {
+    OrderNode* start;
+    OrderNode* end;
+    
+    StackNode(OrderNode* s, OrderNode* e) : start(s), end(e) {}
+};
+
+// Get the last node of a linked list
+OrderNode* get_last_node(OrderNode* head) {
+    while (head != nullptr && head->next != nullptr) {
+        head = head->next;
+    }
+    return head;
+}
+
+// Partition function for linked list
+// Returns the pivot node after partitioning
+OrderNode* partition_linked_list(OrderNode* start, OrderNode* end, bool sort_by_restaurant) {
+    if (start == nullptr || start == end) {
+        return start;
+    }
+    
+    // Use the last element as pivot
+    Order pivot = end->data;
+    OrderNode* i = nullptr;  // Pointer to the last element less than pivot
+    OrderNode* current = start;
+    
+    while (current != end) {
+        bool should_swap = false;
+        
+        if (sort_by_restaurant) {
+            // Compare by restaurant name (case-insensitive)
+            string curr_restaurant = current->data.restaurant;
+            string pivot_restaurant = pivot.restaurant;
+            
+            // Convert to lowercase for comparison
+            for (auto& c : curr_restaurant) c = tolower(c);
+            for (auto& c : pivot_restaurant) c = tolower(c);
+            
+            should_swap = (curr_restaurant < pivot_restaurant);
+        } else {
+            // Compare by timestamp
+            should_swap = (current->data.timestamp < pivot.timestamp);
+        }
+        
+        if (should_swap) {
+            if (i == nullptr) {
+                i = start;
+            } else {
+                i = i->next;
+            }
+            swap(i->data, current->data);
+        }
+        
+        current = current->next;
+    }
+    
+    // Place pivot in correct position
+    if (i == nullptr) {
+        swap(start->data, end->data);
+        return start;
+    } else {
+        swap(i->next->data, end->data);
+        return i->next;
+    }
+}
+
+// Iterative QuickSort using Linked List and Stack
+OrderNode* iterative_quick_sort_linked_list(OrderNode* head, bool sort_by_restaurant) {
+    if (head == nullptr || head->next == nullptr) {
+        return head;
+    }
+    
+    // Manual stack implementation using vector
+    vector<StackNode> stack;
+    
+    // Get the last node
+    OrderNode* last = get_last_node(head);
+    
+    // Push initial range onto stack
+    stack.push_back(StackNode(head, last));
+    
+    // Process stack iteratively
+    while (!stack.empty()) {
+        // Pop from stack
+        StackNode current_range = stack.back();
+        stack.pop_back();
+        
+        OrderNode* start = current_range.start;
+        OrderNode* end = current_range.end;
+        
+        // Skip if range is invalid or single element
+        if (start == nullptr || end == nullptr || start == end) {
+            continue;
+        }
+        
+        // Partition the list
+        OrderNode* pivot = partition_linked_list(start, end, sort_by_restaurant);
+        
+        // Find the node before pivot
+        OrderNode* before_pivot = nullptr;
+        OrderNode* temp = start;
+        while (temp != pivot) {
+            before_pivot = temp;
+            temp = temp->next;
+        }
+        
+        // Push right partition onto stack (pivot+1 to end)
+        if (pivot->next != nullptr && pivot != end) {
+            stack.push_back(StackNode(pivot->next, end));
+        }
+        
+        // Push left partition onto stack (start to pivot-1)
+        if (before_pivot != nullptr && start != pivot) {
+            stack.push_back(StackNode(start, before_pivot));
+        }
+    }
+    
+    return head;
+}

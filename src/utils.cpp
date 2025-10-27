@@ -275,3 +275,25 @@ bool ask_user_to_save() {
     return (response == "y" || response == "Y" || response == "yes" ||
             response == "Yes");
 }
+
+// Function to filter orders by restaurant name (case-insensitive)
+std::vector<Order> filter_orders_by_restaurant(const std::vector<Order>& orders,
+                                               const std::string& restaurant_name) {
+    std::vector<Order> filtered_orders;
+    
+    // Convert search term to lowercase for case-insensitive comparison
+    std::string search_lower = restaurant_name;
+    for (auto& c : search_lower) c = tolower(c);
+    
+    for (const auto& order : orders) {
+        std::string order_restaurant = order.restaurant;
+        // Convert to lowercase for comparison
+        for (auto& c : order_restaurant) c = tolower(c);
+        
+        if (order_restaurant == search_lower) {
+            filtered_orders.push_back(order);
+        }
+    }
+    
+    return filtered_orders;
+}

@@ -16,15 +16,11 @@
 
 // * Project Description
 
-// This project reads a list of food orders from a text file, sorts them using
-// various sorting algorithms, and allows the user to search for orders within
-// a specific date range. The sorted orders can also be saved to an output file.
-// The project is designed to demonstrate the implementation of sorting
-// algorithms and file handling in C++.
-
-// The user can input a start and end date, and the program will filter and
-// display all orders that fall within that range. The user also has the option
-// to save the filtered results to a separate file.
+// This project reads a list of food orders from a text file and sorts them
+// by restaurant name using iterative quicksort with a linked list and stack.
+// The user can then search for orders from a specific restaurant, which are
+// displayed sorted by date. The results show the count of orders and can be
+// saved to an output file.
 
 // Throughout the file there are constants in uppercase, which are color code
 // constantes defined in the src/colors.h file. They are used to color the text
@@ -37,14 +33,14 @@ using namespace std;
 // * Functions from the "utils.cpp" file:
 // * – parse_order_line
 // * – save_to_file
-// * – parse_user_date
-// * – filter_orders_by_date_range
+// * – filter_orders_by_restaurant
 // * – get_string
-// * – display_filtered_orders
-// * – ask_user_to_save
 
 // * Functions from the "sorts.cpp" file:
-// * – merge_sort
+// * – iterative_quick_sort_linked_list (with linked list and stack)
+// * – vector_to_linked_list
+// * – linked_list_to_vector
+// * – merge_sort (for sorting filtered results by date)
 
 int main() {
     fstream OrdersFile("orders.txt");
@@ -60,118 +56,132 @@ int main() {
             Order order = parse_order_line(text);
             orders.push_back(order);
         }
+    } else {
+        cout << ERROR_HEADER << " ERROR " << RESET << " " << ERROR_STYLE
+             << "Failed to open orders.txt" << RESET << endl;
+        return 1;
     }
 
     OrdersFile.close();
 
-    // We now have access to the `orders` vector to perform the different sorts.
+    cout << INFO_STYLE << "Loaded " << orders.size() << " orders from orders.txt"
+         << RESET << "\n\n";
 
-    // We've chosen MergeSort since when testing out the six different
-    // algorithms, it was the fastest of them all, closely followed by
-    // QuickSort :D
+    // ===== STEP 1: Sort by Restaurant Name using Iterative QuickSort =====
+    // with Linked List and Stack
+    
+    cout << SECTION_HEADER << "===== Sorting by Restaurant Name =====    " 
+         << RESET << "\n" << endl;
 
-    cout << SECTION_HEADER << "===== Merge Sort =====    " << RESET << "\n"
-         << endl;
+    cout << INFO_STYLE 
+         << "Using Iterative QuickSort with Linked List and Stack..." 
+         << RESET << endl;
 
     // Setup the chronometer to time the algorithm
     auto start = chrono::high_resolution_clock::now();
-    vector<Order> merge_sorted = merge_sort(orders);  // * Sort call
+    
+    // Convert vector to linked list
+    OrderNode* head = vector_to_linked_list(orders);
+    
+    // Sort by restaurant name using iterative quicksort
+    head = iterative_quick_sort_linked_list(head, true);
+    
+    // Convert back to vector
+    vector<Order> sorted_by_restaurant = linked_list_to_vector(head);
+    
+    // Free the linked list memory
+    free_linked_list(head);
 
     // End the timer
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double, std::milli> duration = end - start;
 
-    cout << INFO_STYLE << "Merge Sort took " << SUCCESS_STYLE
+    cout << INFO_STYLE << "Sorting took " << SUCCESS_STYLE
          << duration.count() << " ms" << RESET << "\n";
     cout << "\n";
 
-    // Display first 10 sorted orders
-    cout << SECTION_HEADER << "===== First 10 Sorted Orders =====    " << RESET
-         << "\n"
-         << endl;
+    // Display first 10 sorted orders by restaurant
+    cout << SECTION_HEADER 
+         << "===== First 10 Orders (Sorted by Restaurant) =====    " 
+         << RESET << "\n" << endl;
 
-    int display_count = min(10, (int)merge_sorted.size());
+    int display_count = min(10, (int)sorted_by_restaurant.size());
     for (int i = 0; i < display_count; i++) {
         char time_str[20];
-        // Pass the timestamp to localtime to convert to struct tm
-        struct tm* timeinfo = localtime(&merge_sorted[i].timestamp);
+        struct tm* timeinfo = localtime(&sorted_by_restaurant[i].timestamp);
         strftime(time_str, sizeof(time_str), "%b %d %H:%M:%S", timeinfo);
 
-        // Print with colors
-        cout << BOLD << (i + 1) << ". " << RESET << TIMESTAMP_STYLE << time_str
-             << RESET << " | " << RESTAURANT_STYLE
-             << "Restaurant: " << merge_sorted[i].restaurant << RESET << " | "
-             << ITEM_STYLE << "Item: " << merge_sorted[i].item << RESET << " | "
-             << PRICE_STYLE << "Price: $" << merge_sorted[i].price << RESET
+        cout << BOLD << (i + 1) << ". " << RESET << RESTAURANT_STYLE
+             << sorted_by_restaurant[i].restaurant << RESET << " | " 
+             << TIMESTAMP_STYLE << time_str << RESET << " | "
+             << ITEM_STYLE << sorted_by_restaurant[i].item << RESET << " | "
+             << PRICE_STYLE << "$" << sorted_by_restaurant[i].price << RESET
              << endl;
     }
     cout << "\n";
 
-    // Save all sorted orders to output.txt
-    cout << SECTION_HEADER << "===== Saving to File =====    " << RESET << "\n"
-         << endl;
-    cout << INFO_STYLE << "Saving all sorted orders to: " << RESET << BOLD
-         << "output.txt" << RESET << "\n"
-         << endl;
+    // ===== STEP 2: Request Restaurant Name from User =====
+    
+    cout << SECTION_HEADER << "===== Restaurant Search =====    " << RESET
+         << "\n" << endl;
 
-    // Call the save to file function to save sorted elements.
-    save_to_file("output.txt", merge_sorted);
+    string restaurant_name = get_string("Enter restaurant name: ");
+    
+    if (restaurant_name.empty()) {
+        cout << ERROR_HEADER << " ERROR " << RESET << " " << ERROR_STYLE
+             << "Restaurant name cannot be empty." << RESET << endl;
+        return 1;
+    }
+
+    // ===== STEP 3: Filter by Restaurant =====
+    
+    vector<Order> restaurant_orders = 
+        filter_orders_by_restaurant(sorted_by_restaurant, restaurant_name);
+
+    if (restaurant_orders.empty()) {
+        cout << WARNING_STYLE << "No orders found for restaurant: " 
+             << restaurant_name << RESET << endl;
+        return 0;
+    }
+
+    // ===== STEP 4: Sort Filtered Results by Date =====
+    
+    cout << "\n" << INFO_STYLE << "Sorting " << restaurant_orders.size() 
+         << " order(s) by date..." << RESET << endl;
+    
+    vector<Order> date_sorted = merge_sort(restaurant_orders);
+
+    // ===== STEP 5: Display Results =====
+    
+    cout << "\n" << SECTION_HEADER 
+         << "===== Results for '" << restaurant_name << "' =====" 
+         << RESET << endl;
+    cout << SUCCESS_STYLE << "Found " << date_sorted.size() 
+         << " order(s)" << RESET << endl;
+    cout << DIM << "-------------------------" << RESET << endl;
+
+    for (size_t i = 0; i < date_sorted.size(); i++) {
+        char time_str[20];
+        struct tm* timeinfo = localtime(&date_sorted[i].timestamp);
+        strftime(time_str, sizeof(time_str), "%b %d %H:%M:%S", timeinfo);
+
+        cout << BOLD << (i + 1) << ". " << RESET << TIMESTAMP_STYLE 
+             << time_str << RESET << " | " << ITEM_STYLE 
+             << date_sorted[i].item << RESET << " | " << PRICE_STYLE 
+             << "$" << date_sorted[i].price << RESET << endl;
+    }
+    cout << DIM << "-------------------------" << RESET << endl;
+
+    // ===== STEP 6: Save to File =====
+    
+    cout << "\n" << INFO_STYLE 
+         << "Saving results to restaurant_results.txt..." 
+         << RESET << endl;
+    
+    save_to_file("restaurant_results.txt", date_sorted);
+    
     cout << SUCCESS_HEADER << " SUCCESS " << RESET << " " << SUCCESS_STYLE
-         << "All " << merge_sorted.size()
-         << " sorted orders saved to output.txt!" << RESET << "\n";
-    cout << "\n";
-
-    cout << SECTION_HEADER << "===== Date Range Search =====    " << RESET
-         << "\n"
-         << endl;
-
-    // Get date range from user
-    cout << WARNING_STYLE
-         << "Enter dates in format 'Mon DD' (e.g., 'Feb 13', 'Dec 24')" << RESET
-         << endl;
-
-     // Receive user input for both dates
-    string start_date_str = get_string("Enter start date: ");
-    string end_date_str = get_string("Enter end date: ");
-
-    // Parse dates to time_t
-    time_t start_date = parse_user_date(start_date_str);
-    time_t end_date = parse_user_date(end_date_str);
-
-    // Validation
-    if (start_date == -1 || end_date == -1) {
-        cout << ERROR_HEADER << " ERROR " << RESET << " " << ERROR_STYLE
-             << "Invalid date format. Please use 'Mon DD' format." << RESET
-             << endl;
-        return 1;
-    }
-
-    // Prevent errors where start date is after end date
-    if (start_date > end_date) {
-        cout << ERROR_HEADER << " ERROR " << RESET << " " << ERROR_STYLE
-             << "Start date cannot be after end date." << RESET << endl;
-        return 1;
-    }
-
-    // Filter orders by date range
-    vector<Order> filtered_orders =
-        filter_orders_by_date_range(merge_sorted, start_date, end_date);
-
-    // Display results
-    display_filtered_orders(filtered_orders);
-
-    // Ask user if they want to save results
-    if (!filtered_orders.empty() && ask_user_to_save()) {
-        string filename =
-            get_string("Enter filename (default: search_results.txt): ");
-        if (filename.empty()) {
-            filename = "search_results.txt";
-        }
-
-        save_to_file(filename, filtered_orders);
-        cout << SUCCESS_HEADER << " SAVED " << RESET << " " << SUCCESS_STYLE
-             << "Results saved to " << filename << "!" << RESET << endl;
-    }
+         << "Results saved to restaurant_results.txt!" << RESET << endl;
 
     return 0;
 }

@@ -37,4 +37,8 @@ std::string get_string(const std::string& prompt);
 void display_filtered_orders(const std::vector<Order>& orders);
 bool ask_user_to_save();
 
+// Function to filter orders by restaurant name
+std::vector<Order> filter_orders_by_restaurant(const std::vector<Order>& orders,
+                                               const std::string& restaurant_name);
+
 #endif  // UTILS_H
