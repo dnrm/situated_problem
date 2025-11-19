@@ -1,0 +1,163 @@
+1. El Sabor del Pueblo | Orders: 82 | Total Sales: $19907
+2. City Bistro | Orders: 80 | Total Sales: $23806
+3. Ondina | Orders: 80 | Total Sales: $21659
+4. The Bee | Orders: 80 | Total Sales: $20635
+5. La Francesa | Orders: 79 | Total Sales: $20378
+6. The Harvest | Orders: 79 | Total Sales: $20509
+7. The Rustic Kitchen | Orders: 78 | Total Sales: $23675
+8. The Stylish Diner | Orders: 78 | Total Sales: $22784
+9. La Cocina del Chef | Orders: 76 | Total Sales: $19518
+10. The American | Orders: 75 | Total Sales: $21428
+11. Sunset Grill | Orders: 74 | Total Sales: $20664
+12. Urban eats | Orders: 74 | Total Sales: $23717
+13. El Sol | Orders: 73 | Total Sales: $20929
+14. La Bella Notte | Orders: 73 | Total Sales: $20667
+15. La Furia | Orders: 73 | Total Sales: $19979
+16. El Rincon del Gourmet | Orders: 72 | Total Sales: $18365
+17. El Sazon Mexicano | Orders: 71 | Total Sales: $19482
+18. La Parrilla Argentina | Orders: 71 | Total Sales: $20428
+19. The Harvest House | Orders: 71 | Total Sales: $19864
+20. El Cafe de la Abuela | Orders: 70 | Total Sales: $18100
+21. Marthas | Orders: 70 | Total Sales: $18150
+22. The Rustic Spoon | Orders: 70 | Total Sales: $19376
+23. Classic Cafe | Orders: 69 | Total Sales: $20926
+24. El Restaurante de Ana | Orders: 69 | Total Sales: $19277
+25. The Lounge | Orders: 69 | Total Sales: $18521
+26. The Trendy eatery | Orders: 69 | Total Sales: $20438
+27. El Marisco Feliz | Orders: 68 | Total Sales: $18017
+28. El Restaurante de la Plaza | Orders: 68 | Total Sales: $19556
+29. La esquina del Taco | Orders: 68 | Total Sales: $16768
+30. The Bistro Lounge | Orders: 68 | Total Sales: $21210
+31. The Cafe Lounge | Orders: 68 | Total Sales: $18698
+32. Las salsas | Orders: 67 | Total Sales: $19866
+33. Los Rincones | Orders: 67 | Total Sales: $15638
+34. Parkside Grill | Orders: 67 | Total Sales: $18660
+35. The Caffeine Spot | Orders: 67 | Total Sales: $16449
+36. The Fine Dining | Orders: 67 | Total Sales: $18452
+37. The Lakeside Bistro | Orders: 67 | Total Sales: $18863
+38. The Not Italian Bistro | Orders: 67 | Total Sales: $20135
+39. The Savory | Orders: 67 | Total Sales: $19147
+40. The Trendy Cafe | Orders: 67 | Total Sales: $17724
+41. El Cafe de la Plaza | Orders: 66 | Total Sales: $18752
+42. El dragon | Orders: 66 | Total Sales: $17187
+43. Here and Now | Orders: 66 | Total Sales: $19287
+44. The Food Haven | Orders: 66 | Total Sales: $19187
+45. The Gourmet Lala | Orders: 66 | Total Sales: $19133
+46. The Greenhouse Cafe | Orders: 66 | Total Sales: $17731
+47. The Seafood Shack | Orders: 66 | Total Sales: $18324
+48. Brunch & Mimosas | Orders: 65 | Total Sales: $19434
+49. La Casa del Sabor | Orders: 65 | Total Sales: $15963
+50. La Cocina de Alicia | Orders: 65 | Total Sales: $19940
+51. La Taberna | Orders: 65 | Total Sales: $16117
+52. The Waterfront | Orders: 65 | Total Sales: $18602
+53. The eatery | Orders: 65 | Total Sales: $17501
+54. The elegant Bistro | Orders: 65 | Total Sales: $20342
+55. Casa de las empanadas | Orders: 64 | Total Sales: $19411
+56. El Rincon | Orders: 64 | Total Sales: $18678
+57. El Rincon del Chef | Orders: 64 | Total Sales: $19253
+58. The Bistro Spot | Orders: 64 | Total Sales: $19099
+59. The Countryside | Orders: 64 | Total Sales: $18990
+60. The House | Orders: 64 | Total Sales: $17463
+61. The Spot | Orders: 64 | Total Sales: $20588
+62. The Urban Bistro | Orders: 64 | Total Sales: $18575
+63. La Cabana | Orders: 63 | Total Sales: $16383
+64. La Cocina | Orders: 63 | Total Sales: $16861
+65. Ocean | Orders: 63 | Total Sales: $16812
+66. The Gourmet Deli | Orders: 63 | Total Sales: $16560
+67. The Main | Orders: 63 | Total Sales: $18893
+68. Tierra y Mar | Orders: 63 | Total Sales: $17000
+69. Don Perfecto | Orders: 62 | Total Sales: $16395
+70. El Barzon | Orders: 62 | Total Sales: $16827
+71. El Cafe del Chef Pablo | Orders: 62 | Total Sales: $17418
+72. La Terraza del Mar | Orders: 62 | Total Sales: $18211
+73. The Corner Place | Orders: 62 | Total Sales: $17656
+74. The Urban | Orders: 62 | Total Sales: $17701
+75. The Village | Orders: 62 | Total Sales: $19798
+76. The elegant Kitchen | Orders: 62 | Total Sales: $17377
+77. Dos hermanos | Orders: 61 | Total Sales: $18758
+78. El Cafe del Jardin | Orders: 61 | Total Sales: $15626
+79. El Mar | Orders: 61 | Total Sales: $16640
+80. El Pueblo | Orders: 61 | Total Sales: $17466
+81. La Internacional | Orders: 61 | Total Sales: $17307
+82. La Pasticceria | Orders: 61 | Total Sales: $19016
+83. La Terraza del Valle | Orders: 61 | Total Sales: $14734
+84. La esquina del Chef | Orders: 61 | Total Sales: $16306
+85. The Farm-to-Table | Orders: 61 | Total Sales: $16582
+86. The Farmhouse | Orders: 61 | Total Sales: $15010
+87. Ana | Orders: 60 | Total Sales: $18051
+88. Bistro Boulevard | Orders: 60 | Total Sales: $18554
+89. El Asador de la Abuela | Orders: 60 | Total Sales: $17300
+90. El Fogon de la Abuela | Orders: 60 | Total Sales: $15735
+91. La Brasserie Parisienne | Orders: 60 | Total Sales: $15350
+92. La Comida Casera | Orders: 60 | Total Sales: $17815
+93. La Rosticeria | Orders: 60 | Total Sales: $16821
+94. Sabor a Mar | Orders: 60 | Total Sales: $16843
+95. The Chic Bistro | Orders: 60 | Total Sales: $16542
+96. The Classic | Orders: 60 | Total Sales: $19241
+97. The Modern Palate | Orders: 60 | Total Sales: $15967
+98. El Otro Rincon | Orders: 59 | Total Sales: $16976
+99. El Rinconcito Tropical | Orders: 59 | Total Sales: $18414
+100. El Sabor | Orders: 59 | Total Sales: $17695
+101. La Abuela | Orders: 59 | Total Sales: $17209
+102. La Cantina de Juan | Orders: 59 | Total Sales: $17428
+103. La Cocina de Pablo | Orders: 59 | Total Sales: $17097
+104. La Taqueria de la esquina | Orders: 59 | Total Sales: $17727
+105. The Garden Table | Orders: 59 | Total Sales: $16729
+106. The Old Mill | Orders: 59 | Total Sales: $18706
+107. El Cafe del Valle | Orders: 58 | Total Sales: $17300
+108. El Valle | Orders: 58 | Total Sales: $16984
+109. La Cocina de la Abuela | Orders: 58 | Total Sales: $16125
+110. La Taberna del Chef | Orders: 58 | Total Sales: $16937
+111. Sabores del Mundo | Orders: 58 | Total Sales: $14115
+112. The Classic Diner | Orders: 58 | Total Sales: $14641
+113. The Modern | Orders: 58 | Total Sales: $19103
+114. El Jardin de los Sabores | Orders: 57 | Total Sales: $16234
+115. The Artisan Table | Orders: 57 | Total Sales: $14500
+116. The Farmhouse Cafe | Orders: 57 | Total Sales: $16414
+117. The Mediterranean Table | Orders: 57 | Total Sales: $14958
+118. The Trendy Table | Orders: 57 | Total Sales: $15292
+119. Cocina Miguel | Orders: 56 | Total Sales: $16939
+120. El Jabali | Orders: 56 | Total Sales: $14181
+121. El Mercado del Pueblo | Orders: 56 | Total Sales: $15745
+122. La Terraza del Chef | Orders: 56 | Total Sales: $18110
+123. The Bistro at Sunset | Orders: 56 | Total Sales: $15551
+124. The Wine Cellar | Orders: 56 | Total Sales: $15800
+125. Delicias del Valle | Orders: 55 | Total Sales: $14900
+126. El Patio Andaluz | Orders: 55 | Total Sales: $15986
+127. La Terraza | Orders: 55 | Total Sales: $13056
+128. La Trattoria Bella | Orders: 55 | Total Sales: $13842
+129. Los Sabores de Aqui | Orders: 55 | Total Sales: $14376
+130. The Cafe Bistro | Orders: 55 | Total Sales: $14171
+131. The Park | Orders: 55 | Total Sales: $15306
+132. The Taste | Orders: 55 | Total Sales: $14303
+133. El Grande | Orders: 54 | Total Sales: $15221
+134. The Green Room | Orders: 54 | Total Sales: $16139
+135. el Cafe del Centro | Orders: 54 | Total Sales: $15402
+136. Por la Playa | Orders: 53 | Total Sales: $13653
+137. The Chic Restaurant | Orders: 53 | Total Sales: $15506
+138. The Old Town | Orders: 53 | Total Sales: $16147
+139. The Rustic Table | Orders: 53 | Total Sales: $14085
+140. The Table | Orders: 53 | Total Sales: $13971
+141. El Cafe de Lola | Orders: 52 | Total Sales: $15344
+142. El Rincon del Mar | Orders: 52 | Total Sales: $13019
+143. La Brasserie Gourmet | Orders: 52 | Total Sales: $15559
+144. Bosque Real | Orders: 51 | Total Sales: $14799
+145. El Uro | Orders: 51 | Total Sales: $14148
+146. Harbor Lights Restaurant | Orders: 51 | Total Sales: $15801
+147. La Cocina de Mama | Orders: 51 | Total Sales: $13931
+148. La Plaza de las Tapas | Orders: 51 | Total Sales: $13958
+149. Rios | Orders: 51 | Total Sales: $14575
+150. The Local Bistro | Orders: 50 | Total Sales: $15249
+151. The Rustic | Orders: 50 | Total Sales: $15710
+152. The Urban Table | Orders: 50 | Total Sales: $14339
+153. El Nuevo Cafe | Orders: 49 | Total Sales: $14049
+154. El Restaurante de la esquina | Orders: 49 | Total Sales: $13738
+155. Los Garcia | Orders: 49 | Total Sales: $14182
+156. Skyline Diner | Orders: 49 | Total Sales: $14076
+157. The Modern eatery | Orders: 49 | Total Sales: $12752
+158. El Rincon Gourmet | Orders: 48 | Total Sales: $13098
+159. The elegant eatery | Orders: 48 | Total Sales: $15049
+160. The New | Orders: 46 | Total Sales: $12421
+161. The Southern Grill | Orders: 46 | Total Sales: $11955
+162. The other place | Orders: 45 | Total Sales: $11842
+163. La Cocina del Mercado | Orders: 44 | Total Sales: $12402
